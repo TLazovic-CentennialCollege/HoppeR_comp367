@@ -1,0 +1,13 @@
+Tomislav
+  Home - 3hrs
+  Ticket Edit(Share with Abel) - 6hrs
+Abel
+  Settings - 2hrs
+  Ticket Edit(Share with Tomislav) - 6hrs
+  Ticket Closure - 3hrs
+Nina
+  Ticket escalation - 3hrs
+  Login - 2hrs
+Mohammed
+  Message Creation - 3hrs
+  Ticket Creation - 3hrs
