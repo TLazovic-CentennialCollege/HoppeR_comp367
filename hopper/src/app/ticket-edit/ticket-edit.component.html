@@ -1,15 +1,15 @@
-<div class="surface-card shadow-2 border-round my-6 mx-6 p-4">
+<div class="surface-card shadow-2 border-round my-5 mx-6 p-4 min-h-screen">
   <!-- surface-card p-4 shadow-2 border-round w-4 m-auto mt-8 min-w-min -->
   <!-- w-full h-auto lg:w-4 justify-content-center align-items-center -->
   <div
     id="buttonContainer"
-    class="surface-card shadow-2 border-round flex justify-content-end flex-wrap"
+    class="surface-card shadow-2 flex justify-content-end flex-wrap m-2"
   >
     <button
       pButton
       pRipple
-      label="Sign In"
-      icon="pi pi-user"
+      label="Return"
+      icon="pi pi-arrow-circle-left"
       class="w-full min-w-min max-w-min"
     ></button>
   </div>
@@ -20,17 +20,21 @@
     <!-- @if (user.userType === 'admin') {
     <p>ADMIN LOGGED IN. THIS WORKS</p>
     } -->
-    <div class="">s</div>
-    <p-card
-      styleClass="mypcard px-3 select-none"
-      [ngStyle]="getTicketStatusButtonStyling()"
+    <div
+      class="shadow-2 border-round justify-content-center align-content-center px-3 py-2"
+      [ngClass]="ticketStatus == 'open' ? 'green-background' : 'red-background'"
     >
       Ticket Status: {{ ticketStatus }}
-    </p-card>
-    <p-card styleClass="mypcard">Other Related information</p-card>
-    <p-card styleClass="mypcard">Date of Ticket Creation</p-card>
+    </div>
+    <div
+      class="shadow-2 border-round justify-content-center align-content-center px-3 py-2 blue-background"
+    >
+      Date of Ticket Creation {{ ticket.dateAndTimeOfCreation }}
+      <!-- <p-card styleClass="mypcard">Other Related information</p-card>
+    <p-card styleClass="mypcard">Date of Ticket Creation</p-card> -->
+    </div>
   </div>
-  <div class="text-center mb-5">
+  <div id="chatContainer" class="shadow-2 text-center">
     <p>ticket-edit works!</p>
   </div>
 </div>

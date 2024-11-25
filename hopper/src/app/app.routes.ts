@@ -1,5 +1,6 @@
 import { Routes } from '@angular/router';
 import { LoginComponent } from './login/login.component';
+import { TicketEditComponent } from './ticket-edit/ticket-edit.component';
 
 export const routes: Routes = [
   {
@@ -7,7 +8,11 @@ export const routes: Routes = [
     component: LoginComponent,
   },
   { path: '', redirectTo: 'login', pathMatch: 'full' },
-  { path: '**', redirectTo: 'login' },
+  // { path: '**', redirectTo: 'login' },
+  {
+    path: 'ticketedit',
+    component: TicketEditComponent,
+  },
 ];
 
 // Not going to use Modules(for routing)
