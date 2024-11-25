@@ -12,6 +12,7 @@ import { MessageService } from 'primeng/api';
 import { CardModule } from 'primeng/card';
 import { CheckboxModule } from 'primeng/checkbox';
 import { ImageModule } from 'primeng/image';
+import { DropdownModule } from 'primeng/dropdown';
 
 @NgModule({
   declarations: [],
@@ -28,6 +29,7 @@ import { ImageModule } from 'primeng/image';
     CardModule,
     CheckboxModule,
     ImageModule,
+    DropdownModule,
   ],
   exports: [
     ToastModule,
@@ -41,6 +43,7 @@ import { ImageModule } from 'primeng/image';
     CardModule,
     CheckboxModule,
     ImageModule,
+    DropdownModule,
   ],
 
   providers: [MessageService],
