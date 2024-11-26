@@ -1,0 +1,15 @@
+Tomislav
+-Login - 2hrs - COMPLETE - ACTUAL = 4hrs
+-Ticket Edit(Share with Abel) - 7hrs
+
+Abel
+-Settings - 2hrs
+-Ticket Edit(Share with Tomislav) - 6hrs
+-Ticket Closure - 3hrs
+Nina
+-Home - 3hrs
+-Ticket escalation - 3hrs
+
+Mohammed
+-Message Creation - 3hrs
+-Ticket Creation - 3hrs
