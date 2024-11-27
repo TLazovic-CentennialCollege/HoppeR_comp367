@@ -58,4 +58,13 @@ export class TicketEditComponent {
     // }
     // return styleOBJ;
   }
+
+  onReturnButtonClick() {
+    // This currently discards/does not save in progress ticket
+    this.routerService.navigateToHome();
+  }
+
+  onEscalateClick() {}
+  onCloseTicketClick() {}
+  onCreateButtonClick() {}
 }
