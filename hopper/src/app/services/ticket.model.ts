@@ -4,4 +4,5 @@ export interface Ticket {
   status: string; //open, missing documents(attention required), closed, etc.
   title: string;
   description: string;
+  dateAndTimeOfCreation: string;
 }

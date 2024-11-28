@@ -6,7 +6,7 @@ import { PrimengModule } from '../../primeng.module';
 
 //my imports
 import { UserService } from '../services/user.service';
-import { RouterService } from '../services/RouterService';
+import { RouterService } from '../services/router.service';
 @Component({
   selector: 'app-login',
   standalone: true,

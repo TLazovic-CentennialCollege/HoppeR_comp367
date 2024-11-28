@@ -8,7 +8,7 @@ import { PrimengModule } from '../../primeng.module';
 
 //My imports
 import { UserService } from '../services/user.service';
-import { RouterService } from '../services/RouterService';
+import { RouterService } from '../services/router.service';
 import { StatusEnum } from '../services/StatusEnum';
 import { TicketService } from '../services/ticket.service';
 import { Ticket } from '../services/ticket.model';
@@ -49,7 +49,6 @@ export class TicketEditComponent {
       ':' +
       this.dateObj.getSeconds(),
   };
-  public ticketStatus = this.ticket.status;
 
   getTicketStatusButtonStyling() {
     // let styleOBJ = { background-color: 'green' };

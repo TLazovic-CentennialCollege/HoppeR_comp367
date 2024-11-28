@@ -1,5 +1,6 @@
 <div
-  class="surface-card shadow-2 border-round my-5 mx-6 p-4 min-h-screen flex flex-column justify-content-between"
+  class="surface-card shadow-2 border-round my-5 mx-6 p-4 flex flex-column justify-content-between"
+  style="min-height: 92vh"
 >
   <!-- surface-card p-4 shadow-2 border-round w-4 m-auto mt-8 min-w-min -->
   <!-- w-full h-auto lg:w-4 justify-content-center align-items-center -->
@@ -24,10 +25,10 @@
       <div
         class="shadow-2 border-round justify-content-center align-content-center px-3 py-2"
         [ngClass]="
-          ticketStatus == 'open' ? 'green-background' : 'red-background'
+          ticket.status == 'open' ? 'green-background' : 'red-background'
         "
       >
-        Ticket Status: {{ ticketStatus }}
+        Ticket Status: {{ ticket.status }}
       </div>
       <div
         class="shadow-2 border-round justify-content-center align-content-center px-3 py-2 blue-background"
