@@ -36,7 +36,7 @@ export class LoginComponent {
       )
     ) {
       //reroute to next page CURRENTLY SET TO EDITTICKET COMPONENT
-      this.routerService.navigateToTicketEdit();
+      this.routerService.navigateToHome();
     }
   }
 
