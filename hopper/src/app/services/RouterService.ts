@@ -14,13 +14,32 @@ export class RouterService {
   //       this.router.navigate(['/login']);
   //     }
   //   }
+  navigateToHome() {
+    this.router.navigate(['/home']);
+  }
+
+  navigateToSettings() {
+    this.router.navigate(['/settings']);
+  }
+
+  navigateToTicketCreation() {
+    this.router.navigate(['/ticketcreation']);
+  }
 
   navigateToTicketEdit() {
     this.router.navigate(['/ticketedit']);
   }
 
-  navigateToHome() {
-    this.router.navigate(['/home']);
+  navigateToMessageCreation() {
+    this.router.navigate(['/messageCreation']);
+  }
+
+  navigateToTicketClosure() {
+    this.router.navigate(['/ticketClosure']);
+  }
+
+  navigateToTicketEscalation() {
+    this.router.navigate(['/ticketEscalation']);
   }
 
   //   navigateToError(errorCode: number) {
