@@ -1,9 +1,12 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { RouterService } from '../services/router.service';
 import { TicketService } from '../services/ticket.service';
-import { CommonModule } from '@angular/common'; 
-import { FormsModule } from '@angular/forms'; 
+import { UserService } from '../services/user.service';
+import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
+import { Ticket } from '../services/ticket.model';
+import { User } from '../services/user.model';
 
 @Component({
   selector: 'app-main',
@@ -12,38 +15,72 @@ import { FormsModule } from '@angular/forms';
   templateUrl: './main.component.html',
   styleUrls: ['./main.component.css'],
 })
-export class MainComponent {
+export class MainComponent implements OnInit {
   routerService = inject(RouterService);
   ticketService = inject(TicketService);
+  userService = inject(UserService);
 
-  //Example
-  tickets = [
-    { id: 1, title: 'Login Issue', details: 'Cannot log in to the portal.' },
-    { id: 2, title: 'Dashboard Error', details: 'Dashboard not loading.' },
-    { id: 3, title: 'Request New User', details: 'Need to create a new user.' },
-  ];
+  filteredTickets: Ticket[] = []; // Tickets filtered based on user type
+  currentUser: User | null = null; // Current logged-in user
 
   constructor(private router: Router) {}
 
-  // Open the settings page
+  ngOnInit(): void {
+    this.loadUserAndTickets();
+  }
+
+  /**
+   * Load user and filter tickets based on their type
+   */
+  loadUserAndTickets(): void {
+    // Fetch the current user
+    this.currentUser = this.userService.getLoggedInUser();
+
+    if (!this.currentUser) {
+      console.error('No user is logged in.');
+      return;
+    }
+
+    if (this.currentUser.userType === 'admin') {
+      // Admin sees all tickets
+      this.filteredTickets = [...this.ticketService['tickets']];
+    } else {
+      // Regular users see only their open tickets
+      const userId = parseInt(this.currentUser.id, 10);
+      this.filteredTickets = this.ticketService.getOpenTicketsByUserId(userId);
+    }
+  }
+
+  /**
+   * Open the settings page
+   */
   openSettings(): void {
     this.routerService.navigateToSettings();
   }
 
-  // Edit a ticket
-  editTicket(ticket: any): void {
+  /**
+   * Edit a ticket
+   */
+  editTicket(ticket: Ticket): void {
     console.log('Navigating to edit page for ticket ID:', ticket.id);
-    //this.routerService.navigateToTicketEditWithId(ticket.id); // Call the method in RouterService
+    this.ticketService.currentTicket = ticket;
+    this.routerService.navigateToTicketEdit();
   }
 
-  // Delete a ticket
+  /**
+   * Delete a ticket
+   */
   deleteTicket(ticketId: number): void {
-    this.tickets = this.tickets.filter((ticket) => ticket.id !== ticketId);
+    this.filteredTickets = this.filteredTickets.filter(
+      (ticket) => ticket.id !== ticketId
+    );
     console.log(`Ticket with ID ${ticketId} deleted.`);
   }
 
-  // Add a new ticket
+  /**
+   * Add a new ticket
+   */
   addTicket(): void {
-    this.routerService.navigateToTicketCreation(); 
+    this.routerService.navigateToTicketCreation();
   }
 }
