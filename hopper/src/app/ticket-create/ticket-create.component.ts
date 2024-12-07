@@ -63,7 +63,7 @@ export class TicketCreateComponent {
     this.onReturnButtonClick();
   }
 
-  onCompleteTicketCreationButtonClick() {
+  onCompleteTicketCreationClick() {
     // This currently discards/does not save in progress ticket
     // this.onReturnButtonClick();
     console.log('event: onCompleteTicketCreationButtonClick');
