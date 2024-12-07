@@ -50,6 +50,7 @@ export class TicketCreateComponent {
   targetEmployeeID!: number;
 
   titleText!: string;
+  descriptionText!: string;
 
   onReturnButtonClick() {
     // This currently discards/does not save in progress ticket
@@ -67,6 +68,12 @@ export class TicketCreateComponent {
     // This currently discards/does not save in progress ticket
     // this.onReturnButtonClick();
     console.log('event: onCompleteTicketCreationButtonClick');
-    // createNewTicket(this.user, titleText, );
+    this.ticketService.createNewTicket(
+      this.user,
+      this.titleText,
+      this.descriptionText
+    );
+    console.log(this.ticketService.tickets);
+    this.routerService.navigateToHome();
   }
 }

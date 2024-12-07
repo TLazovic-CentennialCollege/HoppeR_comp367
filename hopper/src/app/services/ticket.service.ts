@@ -8,7 +8,7 @@ import { User } from './user.model';
 export class TicketService {
   private dateObj = new Date();
 
-  private tickets = [
+  tickets = [
     {
       id: 1,
       userId: 1,
@@ -144,13 +144,13 @@ export class TicketService {
 
   createNewTicket(user: User, ticketTitle: string, ticketDescription: string) {
     const dateObj = new Date();
-    const newTicketId = this.tickets[-1].id + 1;
+    const newTicketId = this.tickets.at(-1)!.id + 1;
     const newTicketToBeAdded = {
       id: newTicketId,
-      userId: user.id,
+      userId: parseInt(user.id),
       status: StatusEnum.Open,
       title: ticketTitle,
-      description: ticketDescription,
+      description: ticketDescription.slice(3, -4),
       dateAndTimeOfCreation:
         this.dateObj.getFullYear() +
         '/' +
@@ -164,5 +164,6 @@ export class TicketService {
         ':' +
         this.dateObj.getSeconds(),
     };
+    this.tickets.push(newTicketToBeAdded);
   }
 }
