@@ -2,12 +2,13 @@ import { Injectable } from '@angular/core';
 
 import { StatusEnum } from './StatusEnum';
 import { type Ticket } from './ticket.model';
+import { User } from './user.model';
 
 @Injectable({ providedIn: 'root' })
 export class TicketService {
   private dateObj = new Date();
 
-  private tickets = [
+  tickets = [
     {
       id: 1,
       userId: 1,
@@ -140,4 +141,29 @@ export class TicketService {
   //   private saveTasks() {
   //     localStorage.setItem('tasks', JSON.stringify(this.tasks));
   //   }
+
+  createNewTicket(user: User, ticketTitle: string, ticketDescription: string) {
+    const dateObj = new Date();
+    const newTicketId = this.tickets.at(-1)!.id + 1;
+    const newTicketToBeAdded = {
+      id: newTicketId,
+      userId: parseInt(user.id),
+      status: StatusEnum.Open,
+      title: ticketTitle,
+      description: ticketDescription.slice(3, -4),
+      dateAndTimeOfCreation:
+        this.dateObj.getFullYear() +
+        '/' +
+        this.dateObj.getMonth() +
+        '/' +
+        this.dateObj.getDate() +
+        ' @ ' +
+        this.dateObj.getHours() +
+        ':' +
+        this.dateObj.getMinutes() +
+        ':' +
+        this.dateObj.getSeconds(),
+    };
+    this.tickets.push(newTicketToBeAdded);
+  }
 }
