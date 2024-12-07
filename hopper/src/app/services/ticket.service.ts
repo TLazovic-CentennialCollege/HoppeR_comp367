@@ -150,7 +150,7 @@ export class TicketService {
       userId: parseInt(user.id),
       status: StatusEnum.Open,
       title: ticketTitle,
-      description: ticketDescription.slice(3, -4),
+      description: ticketDescription ? ticketDescription.slice(3, -4) : '',
       dateAndTimeOfCreation:
         this.dateObj.getFullYear() +
         '/' +

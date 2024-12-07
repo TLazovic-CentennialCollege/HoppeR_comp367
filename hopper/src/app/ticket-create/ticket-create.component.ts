@@ -51,6 +51,7 @@ export class TicketCreateComponent {
 
   titleText!: string;
   descriptionText!: string;
+  background: any;
 
   onReturnButtonClick() {
     // This currently discards/does not save in progress ticket
@@ -76,4 +77,6 @@ export class TicketCreateComponent {
     console.log(this.ticketService.tickets);
     this.routerService.navigateToHome();
   }
+
+  visible: boolean = true;
 }
