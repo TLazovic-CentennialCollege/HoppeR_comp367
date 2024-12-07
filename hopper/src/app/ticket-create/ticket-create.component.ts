@@ -51,7 +51,8 @@ export class TicketCreateComponent {
 
   titleText!: string;
   descriptionText!: string;
-  background: any;
+  inputtedEmail!: string;
+  emailChecked!: boolean;
 
   onReturnButtonClick() {
     // This currently discards/does not save in progress ticket
@@ -79,34 +80,42 @@ export class TicketCreateComponent {
       this.titleText,
       this.descriptionText
     );
+    if (this.emailChecked) {
+      this.sendEmail(
+        ticketToEmail.id,
+        ticketToEmail.title,
+        ticketToEmail.description,
+        this.inputtedEmail
+      );
+    }
     console.log(this.ticketService.tickets);
     this.routerService.navigateToHome();
   }
 
-  // sendMail(
-  //   ticketId: number,
-  //   ticketTitle: string,
-  //   ticketDescription: string,
-  //   email: string
-  // ) {
-  //   const emailContent =
-  //     'This is your confirmation, as you have Succesfully created a Ticket!\nTicket Title: ' +
-  //     ticketTitle +
-  //     '\nTicket Description: ' +
-  //     ticketDescription;
-  //   var link =
-  //     'mailto:' +
-  //     email +
-  //     '' +
-  //     '?cc=myCCaddress@example.com' +
-  //     '&subject=' +
-  //     encodeURIComponent(
-  //       'Ticket Creation Success(Ticket id: ' + ticketId + ')'
-  //     ) +
-  //     '&body=' +
-  //     encodeURIComponent(emailContent);
-  //   window.location.href = link;
-  // }
+  sendEmail(
+    ticketId: number,
+    ticketTitle: string,
+    ticketDescription: string,
+    emailAddress: string
+  ) {
+    const emailContent =
+      'This is your confirmation, as you have Succesfully created a Ticket!\nTicket Title: ' +
+      ticketTitle +
+      '\nTicket Description: ' +
+      ticketDescription;
+    var link =
+      'mailto:' +
+      emailAddress +
+      '' +
+      '?cc=myCCaddress@example.com' +
+      '&subject=' +
+      encodeURIComponent(
+        'Ticket Creation Success(Ticket id: ' + ticketId + ')'
+      ) +
+      '&body=' +
+      encodeURIComponent(emailContent);
+    window.location.href = link;
+  }
 
   visible: boolean = false;
 }
