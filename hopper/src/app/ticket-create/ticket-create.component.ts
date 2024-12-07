@@ -65,11 +65,16 @@ export class TicketCreateComponent {
     this.onReturnButtonClick();
   }
 
-  onCompleteTicketCreationClick() {
+  onBeginCompleteTicketCreationClick() {
     // This currently discards/does not save in progress ticket
     // this.onReturnButtonClick();
+    console.log('event: onBeginCompleteTicketCreationButtonClick');
+    this.visible = true;
+  }
+
+  onCompleteTicketCreationClick() {
     console.log('event: onCompleteTicketCreationButtonClick');
-    this.ticketService.createNewTicket(
+    const ticketToEmail = this.ticketService.createNewTicket(
       this.user,
       this.titleText,
       this.descriptionText
@@ -78,5 +83,30 @@ export class TicketCreateComponent {
     this.routerService.navigateToHome();
   }
 
-  visible: boolean = true;
+  // sendMail(
+  //   ticketId: number,
+  //   ticketTitle: string,
+  //   ticketDescription: string,
+  //   email: string
+  // ) {
+  //   const emailContent =
+  //     'This is your confirmation, as you have Succesfully created a Ticket!\nTicket Title: ' +
+  //     ticketTitle +
+  //     '\nTicket Description: ' +
+  //     ticketDescription;
+  //   var link =
+  //     'mailto:' +
+  //     email +
+  //     '' +
+  //     '?cc=myCCaddress@example.com' +
+  //     '&subject=' +
+  //     encodeURIComponent(
+  //       'Ticket Creation Success(Ticket id: ' + ticketId + ')'
+  //     ) +
+  //     '&body=' +
+  //     encodeURIComponent(emailContent);
+  //   window.location.href = link;
+  // }
+
+  visible: boolean = false;
 }

@@ -165,5 +165,6 @@ export class TicketService {
         this.dateObj.getSeconds(),
     };
     this.tickets.push(newTicketToBeAdded);
+    return newTicketToBeAdded;
   }
 }
