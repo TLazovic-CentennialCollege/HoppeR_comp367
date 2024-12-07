@@ -79,8 +79,12 @@ export class MainComponent implements OnInit {
 
   /**
    * Add a new ticket
-   */
-  addTicket(): void {
+  //  */
+  // addTicket(): void {
+  //   this.routerService.navigateToTicketCreation();
+  // }
+
+  onCreateNewTicketClick() {
     this.routerService.navigateToTicketCreation();
   }
 }

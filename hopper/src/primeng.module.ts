@@ -13,6 +13,8 @@ import { CardModule } from 'primeng/card';
 import { CheckboxModule } from 'primeng/checkbox';
 import { ImageModule } from 'primeng/image';
 import { DropdownModule } from 'primeng/dropdown';
+import { FloatLabelModule } from 'primeng/floatlabel';
+import { EditorModule } from 'primeng/editor';
 
 @NgModule({
   declarations: [],
@@ -30,6 +32,8 @@ import { DropdownModule } from 'primeng/dropdown';
     CheckboxModule,
     ImageModule,
     DropdownModule,
+    FloatLabelModule,
+    EditorModule,
   ],
   exports: [
     ToastModule,
@@ -44,6 +48,8 @@ import { DropdownModule } from 'primeng/dropdown';
     CheckboxModule,
     ImageModule,
     DropdownModule,
+    FloatLabelModule,
+    EditorModule,
   ],
 
   providers: [MessageService],

@@ -3,6 +3,7 @@ import { LoginComponent } from './login/login.component';
 import { TicketEditComponent } from './ticket-edit/ticket-edit.component';
 import { TicketEscalationComponent } from './ticket-escalation/ticket-escalation.component';
 import { MainComponent } from './main/main.component';
+import { TicketCreateComponent } from './ticket-create/ticket-create.component';
 
 export const routes: Routes = [
   {
@@ -28,8 +29,8 @@ export const routes: Routes = [
     component: TicketEditComponent,
   },
   {
-    path: 'ticketedit',
-    component: TicketEditComponent,
+    path: 'ticketcreate',
+    component: TicketCreateComponent,
   },
   // {
   //   path: 'messageCreation',
@@ -39,9 +40,9 @@ export const routes: Routes = [
   //   path: 'ticketClosure',
   //   component: TicketClosureComponent,
   // },
-   {
-  path: 'ticketEscalation',
- component: TicketEscalationComponent,
+  {
+    path: 'ticketEscalation',
+    component: TicketEscalationComponent,
   },
 ];
 
