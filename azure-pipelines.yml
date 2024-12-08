@@ -26,6 +26,16 @@ steps:
     ng build --prod
   displayName: 'npm install and build'
 
+- task: Npm@1
+  displayName: 'npm publish'
+  inputs:
+    command: publish
+    workingDir: hopper
+    verbose: false
+    publishRegistry: useFeed
+    publishFeed: '134a743b-7513-40df-9d0f-b7a7ce46fe05/34a091e5-2465-4094-a729-0c9ed65d43da'
+
+
 # # trigger:
 # - master
 
