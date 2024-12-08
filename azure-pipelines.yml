@@ -24,6 +24,7 @@ steps:
     npm install -g @angular/cli@latest
     npm install
     ng build --prod
+    npm version minor
   displayName: 'npm install and build'
 
 
