@@ -1,0 +1,58 @@
+# Node.js with Angular
+# Build a Node.js project that uses Angular.
+# Add steps that analyze code, save build artifacts, deploy, and more:
+# https://docs.microsoft.com/azure/devops/pipelines/languages/javascript
+
+trigger:
+- main
+
+pool:
+  name: default
+  demands:
+    # - agent.name == self-hosted-agent
+    # <NAME> -equals <VALUE>'
+    - agent.name -equals self-hosted-agent
+
+
+steps:
+- task: NodeTool@0
+  inputs:
+    versionSpec: '20.x'
+  displayName: 'Install Node.js'
+
+- script: |
+    npm install -g @angular/cli@latest
+    npm install
+    ng build --prod
+    # npm version minor
+  displayName: 'npm install and build'
+
+
+# FIX WITH "npm version patch" https://stackoverflow.com/questions/13059991/update-package-json-version-automatically
+# - task: Npm@1
+#   displayName: 'npm publish'
+#   inputs:
+#     command: publish
+#     workingDir: hopper
+#     verbose: false
+#     publishRegistry: useFeed
+#     publishFeed: '134a743b-7513-40df-9d0f-b7a7ce46fe05/34a091e5-2465-4094-a729-0c9ed65d43da'
+
+
+# # trigger:
+# - master
+
+# pool:
+#   vmImage: 'ubuntu-latest'
+
+# steps:
+# - task: NodeTool@0
+#   inputs:
+#     versionSpec: '10.x'
+#   displayName: 'Install Node.js'
+
+# - script: |
+#     npm install -g @angular/cli
+#     npm install
+#     ng build --prod
+#   displayName: 'npm install and build'
