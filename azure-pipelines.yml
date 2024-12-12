@@ -37,22 +37,3 @@ steps:
 #     verbose: false
 #     publishRegistry: useFeed
 #     publishFeed: '134a743b-7513-40df-9d0f-b7a7ce46fe05/34a091e5-2465-4094-a729-0c9ed65d43da'
-
-
-# # trigger:
-# - master
-
-# pool:
-#   vmImage: 'ubuntu-latest'
-
-# steps:
-# - task: NodeTool@0
-#   inputs:
-#     versionSpec: '10.x'
-#   displayName: 'Install Node.js'
-
-# - script: |
-#     npm install -g @angular/cli
-#     npm install
-#     ng build --prod
-#   displayName: 'npm install and build'
