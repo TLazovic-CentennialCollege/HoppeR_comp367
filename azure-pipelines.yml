@@ -23,6 +23,7 @@ steps:
 - script: |
     npm install -g @angular/cli@latest
     npm install
+    npm version patch
     ng build --prod
     # npm version minor
   displayName: 'npm install and build'
