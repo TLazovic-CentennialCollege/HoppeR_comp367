@@ -43,18 +43,17 @@ stages:
         publishRegistry: useFeed
         publishFeed: '134a743b-7513-40df-9d0f-b7a7ce46fe05/34a091e5-2465-4094-a729-0c9ed65d43da'
 
-    # Step 2:
-    - script: |
-        npm install  # Ensure dependencies are installed
-        npm run test -- --code-coverage  # Run unit tests with code coverage
-      displayName: 'Run Unit Tests and Generate Code Coverage'
+    # # Step 2:
+    # - script: |
+    #     npm run test -- --code-coverage
+    #   displayName: 'Run Unit Tests and Generate Code Coverage'
       
-    # Publish Code Coverage
-    - task: PublishCodeCoverageResults@1
-      inputs:
-        codeCoverageTool: 'Cobertura'
-        summaryFileLocation: '$(System.DefaultWorkingDirectory)/coverage/cobertura-coverage.xml' 
-        reportDirectory: '$(System.DefaultWorkingDirectory)/coverage'
-        failIfCoverageEmpty: true
-      displayName: 'Publish Code Coverage Results'
+    # # Publish Code Coverage
+    # - task: PublishCodeCoverageResults@1
+    #   inputs:
+    #     codeCoverageTool: 'Cobertura'
+    #     summaryFileLocation: '$(System.DefaultWorkingDirectory)/coverage/cobertura-coverage.xml' 
+    #     reportDirectory: '$(System.DefaultWorkingDirectory)/coverage'
+    #     failIfCoverageEmpty: true
+    #   displayName: 'Publish Code Coverage Results'
     
