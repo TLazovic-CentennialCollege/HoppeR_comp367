@@ -1,0 +1,60 @@
+# Node.js with Angular
+# Build a Node.js project that uses Angular.
+# Add steps that analyze code, save build artifacts, deploy, and more:
+# https://docs.microsoft.com/azure/devops/pipelines/languages/javascript
+
+trigger:
+- main  
+
+pool:
+  name: default
+  demands:
+    # - agent.name == self-hosted-agent
+    # <NAME> -equals <VALUE>'
+    - agent.name -equals self-hosted-agent
+
+stages:
+- stage: Build
+  displayName: 'Build and Test Angular App'
+  jobs:
+  - job: BuildJob
+    displayName: 'Build'
+    steps:
+    
+    # Step 1: "One Step compiles your project using a build tool
+    - task: NodeTool@0
+      inputs:
+        versionSpec: '20.x'
+      displayName: 'Install Node.js'
+    
+    - script: |
+        npm install -g @angular/cli@latest
+        npm install
+        npm run build --prod
+      displayName: 'Build'
+    
+    #Publish NPM package to feed
+    - task: Npm@1
+      displayName: 'npm publish'
+      inputs:
+        command: publish
+        workingDir: hopper
+        verbose: false
+        publishRegistry: useFeed
+        publishFeed: '134a743b-7513-40df-9d0f-b7a7ce46fe05/34a091e5-2465-4094-a729-0c9ed65d43da'
+
+    # Step 2:
+    - script: |
+        npm install  # Ensure dependencies are installed
+        npm run test -- --code-coverage  # Run unit tests with code coverage
+      displayName: 'Run Unit Tests and Generate Code Coverage'
+      
+    # Publish Code Coverage
+    - task: PublishCodeCoverageResults@1
+      inputs:
+        codeCoverageTool: 'Cobertura'
+        summaryFileLocation: '$(System.DefaultWorkingDirectory)/coverage/cobertura-coverage.xml' 
+        reportDirectory: '$(System.DefaultWorkingDirectory)/coverage'
+        failIfCoverageEmpty: true
+      displayName: 'Publish Code Coverage Results'
+    
